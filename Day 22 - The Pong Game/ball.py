@@ -25,6 +25,7 @@ class Ball(Turtle):
         self.move_speed = 0.1
         self.bounce_right_left()
 
+    # in both below functions, it will change the direction of the ball
     def bounce_top_bottom(self):
         self.y_move *= -1
 
