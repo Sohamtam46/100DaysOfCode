@@ -18,7 +18,6 @@ l_score = Scoreboard(-60)
 r_score = Scoreboard(60)
 
 screen.listen()
-# why up with the brackets??
 screen.onkey(r_paddle.up,"Up")
 screen.onkey(r_paddle.down,"Down")
 screen.onkey(l_paddle.up,"w")
@@ -51,6 +50,7 @@ while game_is_on:
 
 
     ball.move()
+    # ball speed determined and varies with the bounce of ball from paddle
     time.sleep(ball.move_speed)
 
 
