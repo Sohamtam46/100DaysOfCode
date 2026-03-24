@@ -32,18 +32,18 @@ ball_top_hit = False
 while game_is_on:
 
     screen.update()
+    # detect top and bottom boundaries
     if ball.ycor() >= 280 or ball.ycor() <= -280:
         ball.bounce_top_bottom()
 
-
+    # detect the paddles
     if  (ball.xcor() >= 330 or ball.xcor() <= -330) and (r_paddle.distance(ball) <= 50 or l_paddle.distance(ball) <= 50):
         ball.bounce_right_left()
 
-
+    # if ball passes the paddles, rest ball position
     if ball.xcor() > 350:
         ball.reset_position()
         l_score.score_increase()
-
 
     if ball.xcor() <= -350:
         ball.reset_position()
