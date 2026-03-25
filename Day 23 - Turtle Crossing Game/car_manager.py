@@ -32,10 +32,6 @@ class CarManager:
         cars_copy = self.cars[:]
         for car in cars_copy:
             car.fd(self.car_speed)
-            car_x_position = int(car.xcor())
-            if car_x_position < -250:
-                car.hideturtle()
-                self.cars.remove(car)
 
 
     def game_over(self):
