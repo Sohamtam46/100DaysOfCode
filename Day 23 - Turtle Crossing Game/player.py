@@ -12,7 +12,6 @@ class Player(Turtle):
         super().__init__()
         self.shape("turtle")
         self.seth(90)
-        self.color("black")
         self.penup()
         self.position_reset()
 
