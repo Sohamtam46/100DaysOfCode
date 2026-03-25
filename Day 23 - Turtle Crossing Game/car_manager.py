@@ -15,13 +15,14 @@ class CarManager:
 
     def create_cars(self):
         if random.randint(1,6) == 1:
-            new_car = Turtle(shape="car")
+            # new_car = Turtle(shape="car")
+            new_car = Turtle(shape="square")
             new_car.color(random.choice(COLORS))
             new_car.penup()
             new_car.seth(180)
             new_car.goto(280,random.randint(-200,200))
             self.cars.append(new_car)
-            # new_car.shapesize(stretch_wid=1, stretch_len=2)
+            new_car.shapesize(stretch_wid=1, stretch_len=2)
 
 
     def level_increase(self):
