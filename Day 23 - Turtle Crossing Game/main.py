@@ -8,6 +8,7 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
 screen.title("Turtle Crossing")
+screen.register_shape("car","car.gif")
 
 player = Player()
 scoreboard = Scoreboard()
@@ -35,7 +36,7 @@ while game_is_on:
 
     # detect collision of player with car
     for car in car_manager.cars:
-        if player.distance(car) < 30:
+        if player.distance(car) < 50:
             game_is_on = False
             car_manager.game_over()
             scoreboard.game_over()
