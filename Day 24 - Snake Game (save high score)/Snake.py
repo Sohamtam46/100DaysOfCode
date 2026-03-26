@@ -49,6 +49,13 @@ class Snake:
             self.squares[square_num].goto(new_x,new_y)
         self.head.fd(MOVE_DISTANCE)
 
+    def game_reset(self):
+        for square in self.squares:
+            square.goto(1000,1000)
+        self.squares = []
+        self.create_snake()
+        self.head = self.squares[0]
+
     def up(self):
         if self.head.heading() != DOWN:
             self.head.seth(UP)
