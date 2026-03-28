@@ -14,6 +14,12 @@
 
 import pandas
 data = pandas.read_csv("weather_data.csv")
-print(data["temp"])
 
+# average of the temperature
+temperature_data_avg = data["temp"].mean()
+print(f"Average Temp for week = {temperature_data_avg.round(2)}")
+
+# max temp in week
+temperature_data_max_value = data.temp.max()
+print(f"Max Temp for week = {temperature_data_max_value}")
 
