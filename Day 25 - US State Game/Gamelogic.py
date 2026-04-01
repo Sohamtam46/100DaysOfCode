@@ -16,8 +16,8 @@ def state_name_show(guess_name):
     state_name = Turtle()
     state_name.hideturtle()
     state_name.penup()
-    state_x_value = states_data[states_data["state"] == guess_name].x.values.item()
-    state_y_value = states_data[states_data["state"] == guess_name].y.values.item()
+    state_x_value = states_data[states_data["state"] == guess_name].x.item()
+    state_y_value = states_data[states_data["state"] == guess_name].y.item()
     state_name.goto(x=state_x_value,y=state_y_value)
     state_name.write(f"{guess_name}")
 
