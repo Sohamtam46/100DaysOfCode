@@ -1,4 +1,4 @@
-from turtle import Turtle,Screen
+from turtle import Screen
 import Gamelogic
 
 
@@ -17,6 +17,11 @@ while game_is_on:
 
     answer = screen.textinput(f"{score}/50 States Correct","Whats another state name?").title()
 
+    if answer == "Exit":
+        game_is_on = False
+        Gamelogic.game_over(answer_list)
+        break
+
     if answer not in answer_list:
         answer_list.append(answer)
         if Gamelogic.check_answer(answer):
@@ -29,5 +34,3 @@ while game_is_on:
 
 
 
-
-screen.exitonclick()
