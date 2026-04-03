@@ -3,7 +3,7 @@ import pandas as pd
 
 
 states_data = pd.read_csv("50_states.csv")
-state_names_list = states_data.state.to_list()
+all_states = states_data.state.to_list()
 
 
 
@@ -24,7 +24,9 @@ def state_name_show(guess_name):
 
 # generate states forgotten by user  onto a csv
 def game_over(answer_list):
-    states_not_guessed = []
-    states_not_guessed = list(set(state_names_list) - set(answer_list))
+    # states_not_guessed = []
+    # states_not_guessed = list(set(all_states) - set(answer_list))
+    # using list comprehension
+    states_not_guessed = [state for state in all_states if state not in answer_list]
     outputdata = pd.DataFrame(states_not_guessed)
     outputdata.to_csv("States_not_guessed.csv")
