@@ -1,9 +1,8 @@
 from tkinter import *
 
 def button_clicked():
-    print(user_input.get())
-    km_data = int(user_input.get()) * 1.6
-    km_value["text"] = int(km_data)
+    km_data = round(float(user_input.get()) * 1.609)
+    km_value["text"] = f"{km_data}"
 
 window = Tk()
 window.title("Miles to KM Converter")
@@ -11,7 +10,7 @@ window.minsize(width=50,height=100)
 window.config(padx=20,pady=20)
 
 
-user_input = Entry()
+user_input = Entry(width=15)
 user_input.grid(column=1,row=0)
 user_input.focus()
 
