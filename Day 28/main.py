@@ -17,11 +17,12 @@ timer = None
 # ---------------------------- TIMER RESET ------------------------------- #
 
 def reset_timer():
-    global reps
+    global reps,tick_mark
     # will stop the timer
     window.after_cancel(timer)
     title_label.config(text="Timer",foreground=GREEN)
     canvas.itemconfig(timer_text,text=f"{WORK_MIN}:00")
+    tick_mark = ""
     tick_mark_label.config(text="")
     reps = 0
         
@@ -38,20 +39,20 @@ def start_timer():
     work_sec = 10
     short_break_sec = 4
     long_break_sec = 6
-
+    # display the tickmark before the break but after work session
+    tick_mark_label.config(text=tick_mark)
     if reps == 8:
         title_label.config(text="Break",foreground=RED)
         count_down(long_break_sec)
-        reset_timer()
     elif reps % 2 == 0:
-        # following adds tickmark after every work session
-        tick_mark += "✔"
-        tick_mark_label.config(text =tick_mark)
         title_label.config(text="Break",foreground=PINK)
         count_down(short_break_sec)
     elif reps % 2 == 1:
         title_label.config(text="Work",foreground=GREEN)
         count_down(work_sec)
+        # following adds tickmark after every work session
+        tick_mark += "✔"
+
 
 
 
@@ -67,7 +68,10 @@ def count_down(count):
         global timer
         timer = window.after(1000,count_down,count-1)
     else:
-        start_timer()
+        if reps == 8:
+            reset_timer()
+        else:
+            start_timer()
 
 
 
