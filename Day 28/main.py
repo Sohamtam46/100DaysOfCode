@@ -33,12 +33,9 @@ def reset_timer():
 def start_timer():
     global reps,tick_mark
     reps += 1
-    # work_sec = WORK_MIN * 60
-    # short_break_sec = SHORT_BREAK_MIN * 60
-    # long_break_sec = LONG_BREAK_MIN * 60
-    work_sec = 10
-    short_break_sec = 4
-    long_break_sec = 6
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
     # display the tickmark before the break but after work session
     tick_mark_label.config(text=tick_mark)
     if reps == 8:
@@ -52,9 +49,6 @@ def start_timer():
         count_down(work_sec)
         # following adds tickmark after every work session
         tick_mark += "✔"
-
-
-
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
@@ -72,8 +66,6 @@ def count_down(count):
             reset_timer()
         else:
             start_timer()
-
-
 
 
 # ---------------------------- UI SETUP ------------------------------- #
