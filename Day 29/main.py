@@ -41,7 +41,7 @@ def add_login_data():
     else:
         messagebox.showinfo(title="Saved!", message="Your Login Details have been Saved!")
         with open("login.txt", mode="a") as data:
-            data.write(f"\n{website} | {email} | {password}")
+            data.write(f"{website} | {email} | {password}\n")
 
         # helps clear the inputs after saving the login data
         website_input.delete(0, END)
