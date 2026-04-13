@@ -8,13 +8,20 @@ import json
 # ---------------------------- SEARCH LOGIN INFO ------------------------------- #
 
 def search_login_info():
-    website = website_input.get()
-    with open("login.json" , mode="r") as data_file:
-        data = json.load(data_file)
-        retrieved_email = data[website]["Email"]
-        retrieved_password = data[website]["Password"]
-        messagebox.showinfo(f"{website} Login Details",
-                            message=f"Your Login Info is as follows:\nEmail : {retrieved_email}\nPassword : {retrieved_password}")
+    try:
+        website = website_input.get()
+        with open("login.json" , mode="r") as data_file:
+            data = json.load(data_file)
+            retrieved_email = data[website]["Email"]
+            retrieved_password = data[website]["Password"]
+            messagebox.showinfo(f"{website} Login Details",
+                                message=f"Your Login Info is as follows:\nEmail : {retrieved_email}\nPassword : {retrieved_password}")
+    except FileNotFoundError:
+        messagebox.showerror("File Not Found", message="No login details saved yet.")
+    except KeyError:
+        messagebox.showerror("Error Retrieving Data",message="Either Website Login Info doesnt exist or invalid Website Name Entered.")
+
+
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
