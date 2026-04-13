@@ -3,6 +3,7 @@ from tkinter import messagebox
 import data
 import random
 import pyperclip
+import json
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -26,6 +27,12 @@ def add_login_data():
     website = website_input.get()
     email = email_input.get()
     password = password_input.get()
+    new_data = {
+        website : {
+            "Email":email,
+            "Password":password
+        }
+    }
 
     # validation for input fields
     if len(website) == 0:
@@ -40,12 +47,28 @@ def add_login_data():
         password_input.focus()
     else:
         messagebox.showinfo(title="Saved!", message="Your Login Details have been Saved!")
-        with open("login.txt", mode="a") as data:
-            data.write(f"{website} | {email} | {password}\n")
 
-        # helps clear the inputs after saving the login data
-        website_input.delete(0, END)
-        password_input.delete(0, END)
+        try :
+            with open("login.json", mode="r") as data_file:
+                # Reading Data
+                data = json.load(data_file)
+
+        except FileNotFoundError:
+            with open("login.json", mode="w") as data_file:
+                # write data
+                json.dump(new_data, data_file, indent=4)
+
+        else:
+            # Update Data
+            data.update(new_data)
+            with open("login.json", mode="w") as data_file:
+                # write data
+                json.dump(data, data_file, indent=4)
+
+        finally:
+            # helps clear the inputs after saving the login data
+            website_input.delete(0, END)
+            password_input.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------ #
