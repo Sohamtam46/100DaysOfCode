@@ -19,7 +19,7 @@ def search_login_info():
     except FileNotFoundError:
         messagebox.showerror("File Not Found", message="No login details saved yet.")
     except KeyError:
-        messagebox.showerror("Error Retrieving Data",message="Either Website Login Info doesnt exist or invalid Website Name Entered.")
+        messagebox.showerror("Error Retrieving Data",message=f"No Login Details for {website} found!")
 
 
 
