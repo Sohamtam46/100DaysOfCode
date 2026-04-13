@@ -5,6 +5,18 @@ import random
 import pyperclip
 import json
 
+# ---------------------------- SEARCH LOGIN INFO ------------------------------- #
+
+def search_login_info():
+    website = website_input.get()
+    with open("login.json" , mode="r") as data_file:
+        data = json.load(data_file)
+        retrieved_email = data[website]["Email"]
+        retrieved_password = data[website]["Password"]
+        messagebox.showinfo(f"{website} Login Details",
+                            message=f"Your Login Info is as follows:\nEmail : {retrieved_email}\nPassword : {retrieved_password}")
+
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
@@ -85,9 +97,12 @@ canvas.grid(column=1, row=0)
 website_label = Label(text="Website")
 website_label.grid(column=0, row=1)
 
-website_input = Entry(width=52)
-website_input.grid(column=1, row=1, columnspan=2, sticky=W)
+website_input = Entry(width=30)
+website_input.grid(column=1, row=1, sticky=W)
 website_input.focus()
+
+search_button = Button(text="Search", command=search_login_info,width=15)
+search_button.grid(column=2, row=1)
 
 email_label = Label(text="Email/Username")
 email_label.grid(column=0, row=2)
