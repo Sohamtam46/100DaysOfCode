@@ -16,7 +16,6 @@ def flip_the_card():
     window.after_cancel(timer)
 
 def remove_word():
-
     lang_words_dict.remove(chosen_word)
     words_to_learn = lang_words_dict
     words_to_learn_df=pd.DataFrame(words_to_learn)
@@ -65,9 +64,6 @@ right_button.grid(column=1,row=1)
 wrong_button_image = PhotoImage(file="./images/wrong.png")
 wrong_button = Button(image=wrong_button_image, command=new_word_generate, highlightthickness=0)
 wrong_button.grid(column=0,row=1)
-
-
-
 
 
 window.mainloop()
