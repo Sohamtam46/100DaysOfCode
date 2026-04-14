@@ -9,7 +9,7 @@ LANG1 = "Irish"
 LANG2 = "English"
 
 # ---------------------------- Flip the card  ------------------------------- #
-def flip_the_card(chosen_word):
+def flip_the_card():
     canvas.itemconfig(card_img,image=flash_card_back_img)
     canvas.itemconfig(title_text,fill="white",text=LANG2)
     canvas.itemconfig(word_text,fill="white",text=chosen_word[LANG2])
@@ -32,7 +32,7 @@ def new_word_generate():
     canvas.itemconfig(card_img, image=flash_card_front_img)
     canvas.itemconfig(title_text,fill="black",text=LANG1)
     canvas.itemconfig(word_text,fill="black",text=lang1_display_word)
-    timer = window.after(3000,flip_the_card,chosen_word)
+    timer = window.after(3000,func=flip_the_card)
 
 # ---------------------------- UI SETUP ------------------------------ #
 
