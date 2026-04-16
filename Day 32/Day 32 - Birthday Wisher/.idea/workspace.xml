@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c649be4-4c86-4506-86df-4f9b4effc3d6" name="Changes" comment="minor change">
+      <change beforePath="$PROJECT_DIR$/../../Day 27/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/.idea/Day 27.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/.idea/Day 27.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/Other_Tkinter_Widgets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27 - Practice/playground.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 27/Day 27- Project/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 28/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 28/.idea/Day 28.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 28/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 28/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 28/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 28/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 28/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 28/tomato.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/.idea/Day 29.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/login.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 29/pasword_manager_project.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/.idea/Day 31 - Flash Card App.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/data/Irish_words - Copy.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/data/Irish_words.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/data/words_to_learn.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/images/card_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/images/card_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/images/right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/images/wrong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 31 - Flash Card App/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/Day 32.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Day 32 - Birthday Wisher.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/birthdays.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/letter_templates/letter_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/letter_templates/letter_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/letter_templates/letter_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 32 - Prac/.idea/Day 32 - Prac.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 32 - Prac/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 32 - Prac/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 32 - Prac/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 32 - Prac/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 32 - Prac/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 32 - Prac/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 32 - Prac/quotes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/.idea/Day 33.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/.idea/Day 33 - Kanye West Quotes App.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/kanye.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/Day 33 - Kanye West Quotes App/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day 33/main.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Sohamtam46&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Sohamtam46/100DaysOfCode.git&quot;,
+    &quot;accountId&quot;: &quot;f5c5b490-c93c-4b6f-9fbb-52276735d2e7&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3CMKlohJ9zhMMIXyaruWpZltJzb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c649be4-4c86-4506-86df-4f9b4effc3d6" name="Changes" comment="" />
+      <created>1776190154452</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776190154452</updated>
+    </task>
+    <task id="LOCAL-00001" summary="minor change">
+      <option name="closed" value="true" />
+      <created>1776262781467</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776262781467</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="minor change" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor change" />
+  </component>
+</project>
