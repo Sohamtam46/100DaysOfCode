@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="089cfde5-b6ad-4976-bf8f-01ec5606f6ef" name="Changes" comment="Added Functionality">
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/.github/workflows/test.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/.idea/Day 34 - Rain Alert (Github Actions).iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 34 - Rain Alert (Github Actions)/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 35 - Rain Alert/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Day 34 - Rain Alert.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 35 - Rain Alert/.idea/Day 34 - Rain Alert.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 35 - Rain Alert/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 35 - Rain Alert/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 35 - Rain Alert/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 35 - Rain Alert/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 35 - Rain Alert/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 36 - Stock Trading New Alert/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 36 - Stock Trading New Alert/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
