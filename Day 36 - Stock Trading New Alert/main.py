@@ -1,5 +1,3 @@
-from operator import truediv
-
 import requests
 from twilio.rest import Client
 
