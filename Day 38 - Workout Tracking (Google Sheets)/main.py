@@ -35,7 +35,7 @@ duration = data["exercises"][0]["duration_min"]
 exercise_name= data["exercises"][0]["name"]
 
 
-# Updating the exercise in google sheets using sheety:
+# Updating the exercise in Google sheets using sheety:
 # google sheet - https://docs.google.com/spreadsheets/d/1RtxWJ6dV-aRrrEoekgLv1n7caa-cMs8oMeHWn7TyNBc/edit?gid=0#gid=0
 
 google_sheet_endpoint = SHEET_ENDPOINT
