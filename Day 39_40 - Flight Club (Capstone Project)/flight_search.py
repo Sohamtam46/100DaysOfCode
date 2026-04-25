@@ -30,7 +30,3 @@ class FlightSearch:
         response.raise_for_status()
         best_flight_data = response.json()
         return best_flight_data
-
-# flightsearch = FlightSearch()
-# response = flightsearch.search_flight("JFK","2026-04-26","2026-05-03")
-# print(response)

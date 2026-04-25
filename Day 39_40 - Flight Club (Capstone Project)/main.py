@@ -13,7 +13,7 @@ notification_manager = NotificationManager()
 today = date.today()
 dt = today + timedelta(days=1)
 departure_arrival_dates = {}
-# create a dict with outbound dates starting from tomorrow till 3 months.
+# create a dict with outbound dates starting from tomorrow till 1 months.
 # each date is 10 days apart for outbound dates
 # return dates are 7 days apart.
 # dict structure - {departure_date:[arrival_date1,date2,date3]}
@@ -22,19 +22,27 @@ for _ in range (3):
     dt += timedelta(days=10)
 
 for destination in data_manager.current_lowest_flight_price_data['prices']:
+    lowest_price = destination["lowestPrice"]
     print(destination["iataCode"])
     for outbound_date,return_dates in departure_arrival_dates.items():
         for return_date in return_dates:
             flight_information = flight_search.search_flight(destination["iataCode"],outbound_date,return_date)
+            if lowest_price > flight_information["price_insights"]['lowest_price']:
+                lowest_price = flight_information["price_insights"]['lowest_price']
+                lowest_price_outbound_date = outbound_date
+                lowest_price_return_date = return_date
 
-            if destination["lowestPrice"] > flight_information["price_insights"]['lowest_price']:
-                destination["lowestPrice"] = flight_information["price_insights"]['lowest_price']
-                data_manager.update_lowest_price(flight_information["price_insights"]['lowest_price'],destination["id"])
-                message_data = [flight_information["price_insights"]['lowest_price'],
-                                destination["iataCode"],
-                                outbound_date,
-                                return_date]
-                notification_manager.send_message(message_data)
+    if lowest_price < destination["lowestPrice"]:
+        print(lowest_price_outbound_date)
+        print(lowest_price_return_date)
+        destination["lowestPrice"] = lowest_price
+        data_manager.update_lowest_price(flight_information["price_insights"]['lowest_price'], destination["id"])
+        message_data = [flight_information["price_insights"]['lowest_price'],
+                        destination["iataCode"],
+                        lowest_price_outbound_date,
+                        lowest_price_return_date]
+        notification_manager.send_message(message_data)
+
 
 
 
