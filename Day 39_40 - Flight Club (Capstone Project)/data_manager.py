@@ -1,8 +1,6 @@
 import requests
-import requests_cache
 from dotenv import load_dotenv
 import os
-
 
 load_dotenv()
 
@@ -13,11 +11,17 @@ class DataManager:
         self.headers = {
             "Authorization": os.getenv("SHEETY_API_KEY")
         }
-        response = requests.get(url=self.google_sheet_endpoint,headers=self.headers)
+        self.fetch_data()
+
+
+    def fetch_data(self):
+        print("File fetched")
+        response = requests.get(url=self.google_sheet_endpoint, headers=self.headers)
         response.raise_for_status()
         self.current_lowest_flight_price_data = response.json()
 
     def update_lowest_price(self,lowest_price,destination_id):
+        print(f"Lowest price : {lowest_price}")
         google_sheet_endpoint_update = f"{self.google_sheet_endpoint}/{destination_id}"
         row_data = {
             "price":{
@@ -25,6 +29,8 @@ class DataManager:
             }
         }
         requests.put(url=google_sheet_endpoint_update,json=row_data, headers=self.headers)
+        print("File written")
+        self.fetch_data()
 
 
 
