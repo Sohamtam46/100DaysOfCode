@@ -19,7 +19,7 @@ for _ in range (9):
     departure_arrival_dates[str(dt)] = [str(dt + timedelta(days=i * 7)) for i in range(1, 4)]
     dt += timedelta(days=10)
 #
-for destination in data_manager.response['prices']:
+for destination in data_manager.current_lowest_flight_price_data['prices']:
     for outbound_date,return_dates in departure_arrival_dates.items():
         for return_date in return_dates:
             flight_information = flight_search.search_flight(destination["iataCode"],outbound_date,return_date)
