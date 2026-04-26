@@ -35,12 +35,13 @@ class DataManager:
         print("File written")
         self.fetch_data()
 
-    def get_customer_emails(self):
+    def get_customer_data(self):
         users_sheety_endpoint = "https://api.sheety.co/1a4a784652e4f265dc78e101da3699c5/flightPrices/users"
         response = requests.get(url=users_sheety_endpoint, headers=self.headers)
         response.raise_for_status()
         user_data = response.json()
-        return user_data["yourEmailAddress"]
+        return user_data["users"]
+
 
 
 

@@ -8,7 +8,8 @@ from notification_manager import NotificationManager
 # setup
 data_manager = DataManager()
 destination_list = data_manager.destination_data()
-user_email_list = data_manager.get_customer_emails()
+user_data = data_manager.get_customer_data()
+user_email_list = [row['yourEmailAddress'] for row in user_data]
 DEPARTURE_ID = "DUB" # Flights from Dublin
 flight_search = FlightSearch(DEPARTURE_ID)
 notification_manager = NotificationManager()
@@ -60,7 +61,7 @@ for destination in destination_list:
                         nr_stops]
         notification_manager.send_message(message_data)
         for emails in user_email_list:
-            notification_manager.send_email(emails)
+            notification_manager.send_email(emails,message_data)
 
 
 
