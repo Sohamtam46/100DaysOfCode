@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="089cfde5-b6ad-4976-bf8f-01ec5606f6ef" name="Changes" comment="Added Functionality">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 36 - Stock Trading New Alert/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 36 - Stock Trading New Alert/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/data_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/data_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/flight_cache.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/flight_cache.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/flight_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/flight_search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/notification_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 39_40 - Flight Club (Capstone Project)/notification_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,22 +47,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
+        <option value="bundled-python-sdk-b63d5a1f7c97-b61e75351b1f-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.22158.340" />
       </set>
     </attachedChunks>
   </component>

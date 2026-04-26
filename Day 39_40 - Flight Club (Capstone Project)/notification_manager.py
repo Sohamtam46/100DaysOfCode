@@ -1,6 +1,8 @@
 import os
 from dotenv import load_dotenv
 from twilio.rest import Client
+import smtplib
+
 load_dotenv()
 
 class NotificationManager:
@@ -12,7 +14,7 @@ class NotificationManager:
 
     def format_message(self,message_data):
         return (f"Low price alert! Only €{message_data[0]} to fly from DUB to {message_data[1]}, "
-                f"on {message_data[2]} until {message_data[3]}")
+                f"on {message_data[2]} until {message_data[3]} with {message_data[4]} layover(s).")
 
     def send_message(self,message_data):
         message = self.format_message(message_data)
@@ -22,3 +24,13 @@ class NotificationManager:
             to=f'whatsapp:{os.getenv("TO_NUMBER")}'
         )
         print("message sent")
+
+    def send_email(self,email):
+        with smtplib.SMTP("smtp.gmail.com") as connection:
+            connection.starttls()
+            connection.login(user=MY_EMAIL, password=PASSWORD)
+            connection.sendmail(
+                from_addr=MY_EMAIL,
+                to_addrs=MY_EMAIL,
+                msg=f"Subject:Look Up: It's ISS!\n\nCheck the Sky, you can spot ISS."
+            )

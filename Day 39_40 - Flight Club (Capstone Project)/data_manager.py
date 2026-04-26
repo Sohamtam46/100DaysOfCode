@@ -13,6 +13,9 @@ class DataManager:
         }
         self.fetch_data()
 
+    def destination_data(self):
+        return [destination_data for destination_data in self.current_lowest_flight_price_data['prices']]
+
 
     def fetch_data(self):
         print("File fetched")
@@ -31,6 +34,14 @@ class DataManager:
         requests.put(url=google_sheet_endpoint_update,json=row_data, headers=self.headers)
         print("File written")
         self.fetch_data()
+
+    def get_customer_emails(self):
+        users_sheety_endpoint = "https://api.sheety.co/1a4a784652e4f265dc78e101da3699c5/flightPrices/users"
+        response = requests.get(url=users_sheety_endpoint, headers=self.headers)
+        response.raise_for_status()
+        user_data = response.json()
+        return user_data["yourEmailAddress"]
+
 
 
 
