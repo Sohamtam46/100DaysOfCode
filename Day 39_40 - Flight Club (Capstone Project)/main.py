@@ -1,4 +1,3 @@
-#This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
 from data_manager import DataManager
 from flight_search import FlightSearch
 from datetime import date,timedelta
@@ -36,7 +35,7 @@ for destination in data_manager.current_lowest_flight_price_data['prices']:
         print(lowest_price_outbound_date)
         print(lowest_price_return_date)
         destination["lowestPrice"] = lowest_price
-        data_manager.update_lowest_price(flight_information["price_insights"]['lowest_price'], destination["id"])
+        data_manager.update_lowest_price(lowest_price, destination["id"])
         message_data = [lowest_price,
                         destination["iataCode"],
                         lowest_price_outbound_date,
