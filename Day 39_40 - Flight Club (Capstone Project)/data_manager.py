@@ -33,6 +33,7 @@ class DataManager:
         }
         requests.put(url=google_sheet_endpoint_update,json=row_data, headers=self.headers)
         print("File written")
+        print("Successfully")
         self.fetch_data()
 
     def get_customer_data(self):
