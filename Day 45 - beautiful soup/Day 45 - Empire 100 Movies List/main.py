@@ -11,10 +11,8 @@ site_html = response.text
 soup = BeautifulSoup(site_html,"html.parser")
 all_movie_titles = soup.select(selector=".article-title-description__text > h3")
 
-title = []
+title = [movie_title.getText() for movie_title in all_movie_titles]
 
-for movie_title in all_movie_titles:
-    title.append(movie_title.getText())
 
 for movie in reversed(title):
     with open("Best Movies.txt","a", encoding="utf-8") as file:
