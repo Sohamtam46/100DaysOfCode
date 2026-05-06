@@ -56,7 +56,7 @@ def upgrade_upgrades():
 # It is January 1, 1970, 00:00:00 (UTC) on all platforms.
 
 timeout = time.time() + 60*TIMEOUT_MINUTE # to stop the bot after given min
-upgrade_check_time = time.time() + 5 # check upgrade every 5 sec
+upgrade_check_time = time.time() + 3.0 # check upgrade every 5 sec
 
 COUNT = 0
 
@@ -66,10 +66,11 @@ while timeout > time.time():
         if COUNT % 2 == 0:
             upgrade_product()
             COUNT += 1
+
         else:
             upgrade_upgrades()
             COUNT += 1
-        upgrade_check_time = time.time() + 5.0
+        upgrade_check_time = time.time() + 3.0
 
 cookie_per_second = driver.find_element(By.ID, value="cookies")
 print(f"Cookie {cookie_per_second.text}")
