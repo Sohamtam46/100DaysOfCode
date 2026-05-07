@@ -1,0 +1,5 @@
+2026/05/07-06:30:21.403 6ff0 Creating DB C:\Users\soham\Desktop\100 Days Of Code\Day 49 - Selenium Inter\chrome_profile\Default\IndexedDB\https_appbrewery.github.io_0.indexeddb.leveldb since it was missing.
+2026/05/07-06:30:21.413 6ff0 Reusing MANIFEST C:\Users\soham\Desktop\100 Days Of Code\Day 49 - Selenium Inter\chrome_profile\Default\IndexedDB\https_appbrewery.github.io_0.indexeddb.leveldb/MANIFEST-000001
+2026/05/07-06:30:22.040 634 Level-0 table #5: started
+2026/05/07-06:30:22.062 634 Level-0 table #5: 851392 bytes OK
+2026/05/07-06:30:22.066 634 Delete type=0 #3
