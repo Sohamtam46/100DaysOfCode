@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import NoSuchElementException
 import os
 
 
@@ -16,7 +17,9 @@ NUM_CLASS_BOOKED : int = 0
 WAITLIST_JOINED : int = 0
 CLASS_ALREADY_BOOKED : int = 0
 DETAILED_CLASS_LIST = ""
-
+CLASS_BOOKED_NAMES = []
+CLASS_WAITLISTED_NAMES = []
+CONFIRMED_BOOKING_COUNT : int = 0
 
 
 
@@ -68,11 +71,13 @@ for class_card in class_cards:
         class_status = user_choice_class.find_element(By.CSS_SELECTOR,"button[id^='book-button-']").text
         if class_status == CLASS_AVAILABLE:
             NUM_CLASS_BOOKED += 1
+            CLASS_BOOKED_NAMES.append(class_name)
             class_button.click()
             print(f"✓ Booked: {class_name} on {class_day_title} at {class_time}!")
             DETAILED_CLASS_LIST += f"• [New Booking] {class_name} on {class_day_title} at {class_time}!\n"
         elif class_status == CLASS_JOIN_WAITLIST:
             WAITLIST_JOINED += 1
+            CLASS_WAITLISTED_NAMES.append(class_name)
             class_button.click()
             print(f"✓ Joined Waitlist: {class_name} on {class_day_title} at {class_time}!")
             DETAILED_CLASS_LIST += f"• [New Waitlist] {class_name} on {class_day_title} at {class_time}!\n"
@@ -82,17 +87,60 @@ for class_card in class_cards:
         elif class_status == CLASS_ON_WAITLIST:
             CLASS_ALREADY_BOOKED += 1
             print(f"Already on waitlist!")
-print("\n")
+
 # printing summary
+# print(
+#     f"--- BOOKING SUMMARY ---\n"
+#     f"Classes booked: {NUM_CLASS_BOOKED}\n"
+#     f"Waitlists joined: {WAITLIST_JOINED}\n"
+#     f"Already booked/waitlisted: {CLASS_ALREADY_BOOKED}\n"
+#     f"Total Tuesday & Thursday 6pm classes: {NUM_CLASS_BOOKED + WAITLIST_JOINED + CLASS_ALREADY_BOOKED}"
+#     f"\n"
+#     )
+print(" ")
 print(
-    f"--- BOOKING SUMMARY ---\n"
-    f"Classes booked: {NUM_CLASS_BOOKED}\n"
-    f"Waitlists joined: {WAITLIST_JOINED}\n"
-    f"Already booked/waitlisted: {CLASS_ALREADY_BOOKED}\n"
-    f"Total Tuesday & Thursday 6pm classes: {NUM_CLASS_BOOKED + WAITLIST_JOINED + CLASS_ALREADY_BOOKED}"
-    f"\n"
-    )
+    f"--- Total Tuesday & Thursday 6pm classes: {NUM_CLASS_BOOKED + WAITLIST_JOINED + CLASS_ALREADY_BOOKED} ---\n"
+)
 print(
     f"--- DETAILED CLASS LIST ---\n"
     f"{DETAILED_CLASS_LIST}"
 )
+
+print("--- VERIFYING ON MY BOOKINGS PAGE ---")
+
+# navigating to booking page and confirming bookings
+my_booking_nav = driver.find_element(By.ID,value="my-bookings-link")
+my_booking_nav.click()
+
+# confirm navigation
+booking_page = wait.until(ec.presence_of_element_located((By.ID, "my-bookings-page")))
+
+# we check confirmed booking
+confirmed_bookings = driver.find_elements(By.CSS_SELECTOR,value="div[id^='booking-card-booking_']")
+for booking in confirmed_bookings:
+    try:
+        class_name = booking.find_element(By.CSS_SELECTOR,value="h3[id^='booking-class-name-']").text
+        if class_name in CLASS_BOOKED_NAMES:
+            print(f"✓ Verified: {class_name}")
+            CONFIRMED_BOOKING_COUNT += 1
+    except NoSuchElementException:
+        pass
+# check waiting list
+waiting_list = driver.find_elements(By.CSS_SELECTOR,value="div[id^='waitlist-card-waitlist_']")
+for booking in waiting_list:
+    try:
+        class_name = booking.find_element(By.CSS_SELECTOR,value="h3[id^='waitlist-class-name-']").text
+        if class_name.split("(")[0].strip() in CLASS_WAITLISTED_NAMES:
+            print(f"✓ Verified: {class_name}")
+            CONFIRMED_BOOKING_COUNT += 1
+    except NoSuchElementException:
+        pass
+
+print(" ")
+print("--- VERIFICATION RESULT ---")
+print(f"Expected: {NUM_CLASS_BOOKED + WAITLIST_JOINED + CLASS_ALREADY_BOOKED} bookings")
+print(f"Found: {CONFIRMED_BOOKING_COUNT} bookings")
+if NUM_CLASS_BOOKED + WAITLIST_JOINED + CLASS_ALREADY_BOOKED == CONFIRMED_BOOKING_COUNT:
+    print(f"✅ SUCCESS: All bookings verified!")
+else:
+    print(f"❌ MISMATCH: Missing {CONFIRMED_BOOKING_COUNT - (NUM_CLASS_BOOKED + WAITLIST_JOINED + CLASS_ALREADY_BOOKED)} bookings")
