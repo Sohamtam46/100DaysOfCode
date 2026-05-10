@@ -1,9 +1,11 @@
 from selenium import webdriver
+from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException
 import os
+import time
 
 
 ACCOUNT_EMAIL = "soham.test@gmail.com"  # The email registered with
@@ -36,22 +38,44 @@ driver.get(GYM_URL)
 
 
 # logging into the site
-wait = WebDriverWait(driver, timeout=10)
+wait = WebDriverWait(driver, timeout=2)
 
-login = wait.until(ec.element_to_be_clickable((By.ID, "login-button")))
-login.click()
 
-# logging in
-email_input = wait.until(ec.presence_of_element_located((By.ID, "email-input")))
-email_input.send_keys(ACCOUNT_EMAIL)
-pass_input = driver.find_element(By.ID,value="password-input")
-pass_input.send_keys(ACCOUNT_PASSWORD)
-# hit submit
-submit_btn = driver.find_element(By.ID,value="submit-button")
-submit_btn.click()
+def retry(func, retries=7, description=None):
+    for attempt in range(retries):
+        print(f"Trying {description}. Attempt {attempt + 1}")
+        try:
+             # flow goes back outside loop if attempt is success or else it raises exception
+             # and except block executes
+             return func()
+        except TimeoutException:
+            # this if block will raise and exception only if all retires are exhausted
+            if attempt == retries - 1:
+                raise
+            time.sleep(1)
 
-# wait until schedule page loads
-schedule_page = wait.until(ec.presence_of_element_located((By.ID, "schedule-page")))
+
+def login():
+    # logging in
+    login = wait.until(ec.element_to_be_clickable((By.ID, "login-button")))
+    login.click()
+    email_input = wait.until(ec.presence_of_element_located((By.ID, "email-input")))
+    email_input.clear()
+    email_input.send_keys(ACCOUNT_EMAIL)
+    pass_input = driver.find_element(By.ID,value="password-input")
+    pass_input.clear()
+    pass_input.send_keys(ACCOUNT_PASSWORD)
+    # hit submit
+    submit_btn = driver.find_element(By.ID,value="submit-button")
+    submit_btn.click()
+    # wait until schedule page loads
+    wait.until(ec.presence_of_element_located((By.ID, "schedule-page")))
+
+
+# a wrapper to retry login in case of login failure
+retry(func=login,description="Login")
+
+
 
 # find the gym cards for next tuesday
 # tuesday_cards = driver.find_element(By.CSS_SELECTOR,"div[id*='tue']")
