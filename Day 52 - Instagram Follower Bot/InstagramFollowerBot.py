@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.common import NoSuchElementException
+from selenium.common import NoSuchElementException,ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -8,12 +8,13 @@ import undetected_chromedriver as uc
 import time
 import random
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
-from websockets.utils import accept_key
 
 INSTAGRAM_URL = "https://www.instagram.com/"
 INSTAGRAM_EMAIL = os.getenv("INSTAGRAM_EMAIL")
-INSTAGRAM_PASS = os.getenv("instagram_pass")
+INSTAGRAM_PASS = os.getenv("INSTAGRAM_PASS")
 
 class InstagramFollowerBot:
 
@@ -25,6 +26,14 @@ class InstagramFollowerBot:
         chrome_options.add_argument("--no-first-run")  # Stops Chrome from opening up profile page on startup.
         chrome_options.add_argument(
             "--no-default-browser-check")  # Stops Chrome from asking about making it default browser
+        chrome_options.add_argument("--password-store=basic")
+        chrome_options.add_experimental_option(
+            "prefs",
+            {
+                "credentials_enable_service": False,
+                "profile.password_manager_enabled": False,
+            },
+        )
         self.driver = uc.Chrome(chrome_options, keep_alive=True)
         # self.wait = WebDriverWait(self.driver, timeout=10)
         self.driver.maximize_window()
@@ -78,15 +87,41 @@ class InstagramFollowerBot:
     def find_followers(self):
 
         time.sleep(3)
+        # works as of 15/5/26
         modal_xpath = "/html/body/div[4]/div[2]/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]"
         try:
             # scr1 = self.driver.find_element(By.CSS_SELECTOR,'.x6nl9eh.x1a5l9x9.x7vuprf')
             scr1 = self.driver.find_element(By.XPATH,modal_xpath)
-            for i in range(20):
+            for i in range(2):
+                # user_name = self.driver.find_element(By.XPATH,"/html/body/div[4]/div[2]/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[1]/div/div/div/div[2]/div/div/div/div/span/div/a/div/div/span")
+                # print(f"following {user_name.text}")
+                # for y in range (2):
+                #     print("following")
+                #     self.follow()
                 print("Scrolling..")
                 self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scr1)
-                time.sleep(random.uniform(2,3))
+
+                time.sleep(2)
         except NoSuchElementException:
             print("No Scrollable Element Found!")
+
+
+
+    def follow(self):
+
+        people_follow_button = self.driver.find_elements(by=By.CLASS_NAME, value="//div[contains(@class, 'x1qnrgzn x1cek8b2 xb10e19 x19rwo8q x1lliihq x193iq5w xh8yej3')]//button[@class=' _aswp _aswr _aswv _asw_ _asx2']")
+
+        for person_follow in people_follow_button:
+            # print(person_follow.text())
+            try:
+                person_follow.click()
+            except ElementClickInterceptedException:
+                try:
+                    print("Element not clickable")
+                    cancel_button = self.driver.find_element(by=By.XPATH, value='/html/body/div[5]/div[1]/div/div[2]/div/div/div/div/div/div/button[2]')
+                    cancel_button.click()
+                except Exception as e:
+                    print(f"Exception | {e}")
+            time.sleep(2)
         # to keep the window open
         input("Press Enter to close the browser...")
