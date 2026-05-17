@@ -1,8 +1,6 @@
-from selenium import webdriver
+
 from selenium.common import NoSuchElementException,ElementClickInterceptedException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.keys import Keys
 import undetected_chromedriver as uc
 import time
@@ -73,7 +71,7 @@ class InstagramFollowerBot:
         notification_popup.click()
 
         time.sleep(2)
-        self.driver.get(f"{INSTAGRAM_URL}rockstargames/")
+        self.driver.get(f"{INSTAGRAM_URL}nasa/")
 
         # time.sleep(3)
         # following_count = self.driver.find_element(By.XPATH, "//a[@role='link'][contains(., 'following')//span[contains(@class, 'x1s688f')]")
@@ -85,7 +83,7 @@ class InstagramFollowerBot:
 
 
     def find_followers(self):
-
+        """Looks for the followers element and scrolls through 2[hardcoded] times to get a list of followers."""
         time.sleep(3)
         # works as of 15/5/26
         modal_xpath = "/html/body/div[4]/div[2]/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]"
@@ -108,17 +106,22 @@ class InstagramFollowerBot:
 
 
     def follow(self):
-
-        people_follow_button = self.driver.find_elements(by=By.CLASS_NAME, value="//div[contains(@class, 'x1qnrgzn x1cek8b2 xb10e19 x19rwo8q x1lliihq x193iq5w xh8yej3')]//button[@class=' _aswp _aswr _aswv _asw_ _asx2']")
-
-        for person_follow in people_follow_button:
-            # print(person_follow.text())
+        """This Function will follow people in the followers list. It will only follow the people who
+        haven't been followed yet."""
+        people = self.driver.find_elements(by=By.XPATH, value="//div[contains(@class, 'x1qnrgzn x1cek8b2 xb10e19 x19rwo8q x1lliihq x193iq5w xh8yej3')]")
+        print(people)
+        for person_follow in people:
+            # print(person_follow.text)
             try:
-                person_follow.click()
+                print("Following person")
+                follow_btn = person_follow.find_element(By.XPATH,"//div[text()='Follow']")
+                follow_btn.click()
+                time.sleep(2)
             except ElementClickInterceptedException:
                 try:
                     print("Element not clickable")
-                    cancel_button = self.driver.find_element(by=By.XPATH, value='/html/body/div[5]/div[1]/div/div[2]/div/div/div/div/div/div/button[2]')
+                    # cancel_button = self.driver.find_element(by=By.XPATH, value='/html/body/div[5]/div[1]/div/div[2]/div/div/div/div/div/div/button[2]')
+                    cancel_button = self.driver.find_element(By.XPATH,"//button[text()='Cancel']")
                     cancel_button.click()
                 except Exception as e:
                     print(f"Exception | {e}")
