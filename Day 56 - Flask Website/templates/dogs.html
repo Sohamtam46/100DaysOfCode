@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dog Breeds Explorer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f3; color: #1a1a18; min-height: 100vh; padding: 2rem 1rem; }
+    h1 { font-size: 24px; font-weight: 500; margin-bottom: 4px; }
+    .subtitle { font-size: 14px; color: #5f5e5a; margin-bottom: 1.5rem; }
+    .container { max-width: 820px; margin: 0 auto; }
+    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-btn { font-size: 13px; padding: 5px 14px; border-radius: 8px; cursor: pointer; border: 0.5px solid #b4b2a9; background: #fff; color: #5f5e5a; transition: all 0.15s; }
+    .filter-btn:hover { border-color: #888780; }
+    .filter-btn.on { background: #e6f1fb; color: #185fa5; border-color: #378add; }
+    .breed-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+    .breed-card { background: #fff; border: 0.5px solid #d3d1c7; border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color 0.15s; }
+    .breed-card:hover { border-color: #888780; }
+    .breed-card.active { border: 2px solid #378add; }
+    .breed-img-wrap { width: 100%; height: 140px; overflow: hidden; background: #e8e6e0; }
+    .breed-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .breed-info { padding: 0.75rem 1rem; }
+    .breed-name { font-size: 14px; font-weight: 500; margin: 0 0 4px; }
+    .breed-tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 8px; margin-top: 2px; }
+    .detail-panel { background: #eeede8; border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 16px; }
+    .detail-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+    .detail-img-wrap { width: 120px; height: 120px; border-radius: 10px; overflow: hidden; flex-shrink: 0; background: #e8e6e0; }
+    .detail-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .detail-title { font-size: 22px; font-weight: 500; margin: 0; }
+    .detail-subtitle { font-size: 14px; color: #5f5e5a; margin: 4px 0 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin: 14px 0; }
+    .stat-card { background: #fff; border-radius: 8px; padding: 10px 12px; border: 0.5px solid #d3d1c7; }
+    .stat-label { font-size: 12px; color: #5f5e5a; margin: 0 0 2px; }
+    .stat-value { font-size: 15px; font-weight: 500; margin: 0; }
+    .section-label { font-size: 12px; font-weight: 500; color: #5f5e5a; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 8px; }
+    .trait-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .trait-label { font-size: 13px; color: #5f5e5a; width: 110px; flex-shrink: 0; }
+    .trait-bar-bg { flex: 1; height: 6px; border-radius: 3px; background: #d3d1c7; }
+    .trait-bar-fill { height: 6px; border-radius: 3px; }
+    .desc { font-size: 14px; color: #5f5e5a; line-height: 1.6; margin: 14px 0 0; }
+    #detail { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🐾 Dog Breeds Explorer</h1>
+    <p class="subtitle">Click a breed card to see details.</p>
+    <div class="filter-row" id="filters"></div>
+    <div class="breed-grid" id="grid"></div>
+    <div id="detail"></div>
+  </div>
+
+  <script>
+    const breeds = [
+      { name:"Labrador Retriever",  img:"static/labrador.jpg",  group:"sporting", origin:"Canada",  size:"Large",  weight:"25–36 kg", lifespan:"10–12 yrs", coat:"Short, dense",     color:"#185FA5", colorBg:"#E6F1FB", colorText:"#0C447C",
+        traits:{ Friendliness:5, Energy:5, Trainability:5, Grooming:2, Barking:2 },
+        desc:"One of the world's most popular breeds, Labs are friendly, outgoing, and active. Originally bred as fishing and hunting companions in Newfoundland, they excel as guide dogs, service dogs, and family pets." },
+      { name:"German Shepherd",     img:"static/german_shepheard.jpg",     group:"herding",  origin:"Germany", size:"Large",  weight:"22–40 kg", lifespan:"9–13 yrs",  coat:"Medium, double",  color:"#3B6D11", colorBg:"#EAF3DE", colorText:"#27500A",
+        traits:{ Friendliness:4, Energy:5, Trainability:5, Grooming:3, Barking:3 },
+        desc:"Intelligent, confident, and courageous, the German Shepherd is one of the most versatile working breeds. They serve as police, military, and search-and-rescue dogs worldwide." },
+      { name:"Golden Retriever",    img:"static/golden_retriever.jpg",    group:"sporting", origin:"Scotland",size:"Large",  weight:"25–34 kg", lifespan:"10–12 yrs", coat:"Medium, wavy",    color:"#BA7517", colorBg:"#FAEEDA", colorText:"#633806",
+        traits:{ Friendliness:5, Energy:4, Trainability:5, Grooming:3, Barking:2 },
+        desc:"Gentle, loyal, and trustworthy, Golden Retrievers are among the most beloved family dogs. Originally bred for retrieving waterfowl, they now shine as therapy and assistance dogs." },
+      { name:"French Bulldog",      img:"static/french_bulldog.jpg",      group:"companion",origin:"France",  size:"Small",  weight:"8–13 kg",  lifespan:"10–12 yrs", coat:"Short, smooth",   color:"#533AB7", colorBg:"#EEEDFE", colorText:"#26215C",
+        traits:{ Friendliness:5, Energy:2, Trainability:3, Grooming:1, Barking:2 },
+        desc:"Compact and muscular with a playful spirit, French Bulldogs thrive as city dogs. Their bat-like ears and smushed face are iconic. They rarely bark and need minimal exercise." },
+      { name:"Beagle",              img:"static/beagle.jpg",              group:"hound",    origin:"England", size:"Medium", weight:"9–11 kg",  lifespan:"12–15 yrs", coat:"Short, dense",    color:"#993C1D", colorBg:"#FAECE7", colorText:"#4A1B0C",
+        traits:{ Friendliness:5, Energy:4, Trainability:3, Grooming:2, Barking:4 },
+        desc:"Sturdy and compact, Beagles are curious and merry scent hounds. Originally bred for hunting rabbits, they have an excellent nose and a loud howl that can echo through a neighborhood." },
+      { name:"Poodle",              img:"static/poodle.jpg",              group:"sporting", origin:"Germany", size:"Medium", weight:"20–32 kg", lifespan:"10–18 yrs", coat:"Curly, dense",    color:"#0F6E56", colorBg:"#E1F5EE", colorText:"#04342C",
+        traits:{ Friendliness:4, Energy:4, Trainability:5, Grooming:5, Barking:3 },
+        desc:"Often considered the most intelligent breed, Poodles are highly trainable and elegant. Their curly, low-shedding coat makes them popular with allergy sufferers, and they come in three sizes." },
+      { name:"Husky",               img:"static/husky.jpg",               group:"working",  origin:"Siberia", size:"Large",  weight:"16–27 kg", lifespan:"12–15 yrs", coat:"Thick, double",   color:"#444441", colorBg:"#F1EFE8", colorText:"#2C2C2A",
+        traits:{ Friendliness:4, Energy:5, Trainability:3, Grooming:3, Barking:5 },
+        desc:"Bred by the Chukchi people to pull sleds across frozen tundra, Huskies are energetic, athletic, and free-spirited. Their striking blue eyes and wolf-like appearance make them instantly recognizable." },
+      { name:"Dachshund",           img:"static/daschund.jpg",           group:"hound",    origin:"Germany", size:"Small",  weight:"7–15 kg",  lifespan:"12–16 yrs", coat:"Short / long / wire", color:"#993556", colorBg:"#FBEAF0", colorText:"#4B1528",
+        traits:{ Friendliness:4, Energy:3, Trainability:3, Grooming:2, Barking:4 },
+        desc:"With their long bodies and short legs, Dachshunds are instantly recognizable. Originally bred to hunt badgers in burrows, they are brave, independent, and surprisingly energetic." },
+    ];
+
+    const groups = ["all","sporting","herding","hound","working","companion"];
+    let activeGroup = "all";
+    let activeBreed = null;
+
+    const filtersEl = document.getElementById("filters");
+    const gridEl = document.getElementById("grid");
+    const detailEl = document.getElementById("detail");
+
+    function renderFilters() {
+      filtersEl.innerHTML = groups.map(g =>
+        `<button class="filter-btn${activeGroup===g?" on":""}" onclick="setGroup('${g}')">${g.charAt(0).toUpperCase()+g.slice(1)}</button>`
+      ).join("");
+    }
+
+    function setGroup(g) {
+      activeGroup = g;
+      activeBreed = null;
+      detailEl.style.display = "none";
+      renderFilters();
+      renderGrid();
+    }
+
+    function renderGrid() {
+      const filtered = breeds.filter(b => activeGroup==="all" || b.group===activeGroup);
+      gridEl.innerHTML = filtered.map(b => `
+        <div class="breed-card${activeBreed===b.name?" active":""}" onclick="showBreed('${b.name}')">
+          <div class="breed-img-wrap">
+            <img src="${b.img}" alt="${b.name}" />
+          </div>
+          <div class="breed-info">
+            <p class="breed-name">${b.name}</p>
+            <span class="breed-tag" style="background:${b.colorBg};color:${b.colorText}">${b.group}</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function bar(val, color) {
+      return `<div class="trait-bar-bg"><div class="trait-bar-fill" style="width:${val*20}%;background:${color}"></div></div>`;
+    }
+
+    function showBreed(name) {
+      activeBreed = name;
+      renderGrid();
+      const b = breeds.find(x => x.name===name);
+      detailEl.style.display = "block";
+      detailEl.innerHTML = `
+        <div class="detail-panel">
+          <div class="detail-header">
+            <div class="detail-img-wrap">
+              <img src="${b.img}" alt="${b.name}" />
+            </div>
+            <div>
+              <h2 class="detail-title">${b.name}</h2>
+              <p class="detail-subtitle">${b.origin} · ${b.group}</p>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><p class="stat-label">Size</p><p class="stat-value">${b.size}</p></div>
+            <div class="stat-card"><p class="stat-label">Weight</p><p class="stat-value">${b.weight}</p></div>
+            <div class="stat-card"><p class="stat-label">Lifespan</p><p class="stat-value">${b.lifespan}</p></div>
+            <div class="stat-card"><p class="stat-label">Coat</p><p class="stat-value">${b.coat}</p></div>
+          </div>
+          <p class="section-label" style="margin-top:16px">Traits</p>
+          ${Object.entries(b.traits).map(([k,v]) => `
+            <div class="trait-bar-row">
+              <span class="trait-label">${k}</span>
+              ${bar(v, b.color)}
+              <span style="font-size:13px;color:#5f5e5a;width:16px">${v}</span>
+            </div>`).join("")}
+          <p class="desc">${b.desc}</p>
+        </div>
+      `;
+      detailEl.scrollIntoView({ behavior:"smooth", block:"nearest" });
+    }
+
+    renderFilters();
+    renderGrid();
+  </script>
+</body>
+</html>
